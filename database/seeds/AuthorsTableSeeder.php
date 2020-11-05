@@ -13,11 +13,10 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $newAuthor = new Author;
-
         for ($i=0; $i <10 ; $i++) { 
+            $newAuthor = new Author;
             $newAuthor->name = $faker->firstName();
-            $newAuthor->name = $faker->lastName();
+            $newAuthor->lastname = $faker->lastName();
             $newAuthor->date_of_birth = $faker->dateTimeBetween('-30 years', 'now');
 
             $newAuthor->save();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAuthorInfoTable extends Migration
+class CreateAuthorsInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAuthorInfoTable extends Migration
      */
     public function up()
     {
-        Schema::create('author_info', function (Blueprint $table) {
+        Schema::create('authors_info', function (Blueprint $table) {
             $table->foreignId('author_id')->constrained();
             $table->string('nationality');
             $table->text('bio');

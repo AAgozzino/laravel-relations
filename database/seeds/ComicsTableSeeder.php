@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 // Aggiungo il model che deve utilizzare il seeder
 use App\Comic;
+use App\Author;
 // Aggiungo il Faker per popolare la tabella
 use Faker\Generator as Faker;
 
@@ -18,6 +19,9 @@ class ComicsTableSeeder extends Seeder
     {
         //Eseguo ciclo for per la creazione dei fumetti
         for ($i = 0; $i < 30; $i++) { 
+            // Prendo un autore in modo casuale
+            $RandomAuthors = Author::inRandomOrder()->first();
+
             // Instanzio un nuovo oggetto Comic dal model
             $newComic = new Comic;
 
@@ -26,7 +30,7 @@ class ComicsTableSeeder extends Seeder
             if (rand(0,1) == 1){
                 $newComic->original_title = $faker->text(100);
             }
-            $newComic->author = $faker->name();
+            $newComic->author_id = $RandomAuthors->id;
             $newComic->editor = $faker->company;
             $newComic->release = $faker->year('now');
             $newComic->number = $faker->numberBetween(1, 1500);
